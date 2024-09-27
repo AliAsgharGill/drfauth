@@ -20,10 +20,8 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     def create(self,validate_data):
         return User.objects.create_user(**validate_data)
     
-    # def create(self, validated_data):
-    #     password = validated_data.pop('password', None)
-    #     instance = self.Meta.model(**validated_data)
-    #     if password is not None:
-    #         instance.set_password(password)
-    #     instance.save()
-    #     return instance
+class UserLoginSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(max_length=255)
+    class Meta:
+        model = User
+        fields = ['email', 'password']
