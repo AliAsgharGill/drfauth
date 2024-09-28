@@ -72,7 +72,7 @@ class SendResetPasswordEmailSerializer(serializers.Serializer):
             return attrs
         raise serializers.ValidationError('User with this email does not exist')
 
-class UserPasswordResetSerializer(serializers.Serializer):
+class ForgotPasswordSerializer(serializers.Serializer):
     password = serializers.CharField(max_length=255, style={'input_type': 'password'}, write_only=True)
     password2 = serializers.CharField(max_length=255, style={'input_type': 'password'}, write_only=True)
     
